@@ -9,7 +9,7 @@
 # You can also download the binary from https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.11.md#downloads-for-v1111
 sudo apt-get remove docker docker-engine docker.io containerd runc
 sudo apt-get update
-sudo apt-get install \
+sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -35,3 +35,7 @@ sudo apt-get update
 # apt-cache madison kubeadm
 # This will install kubeadm kubelet kubectl and kubernetes-cni
 sudo apt-get -y install kubeadm=1.15.3-00 kubelet=1.15.3-00 kubernetes-cni=0.7.5-00
+sudo apt-mark hold kubelet kubeadm kubectl
+
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
